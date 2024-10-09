@@ -11,6 +11,6 @@ object TestC extends App {
   println("nothing in TestC")
 
 
-  SelectTb("test", "scala")
+
 
 }
