@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  airflow-webserver:
+    image: airflow:latest  # Use 'airf225' if you have a custom image
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      # Updated SQL Alchemy connection string to point to local PostgreSQL
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:password@host.docker.internal:5432/Scala
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__API__AUTH_BACKEND: "airflow.api.auth.backend.basic_auth"
+      AIRFLOW_WWW_USER_USERNAME: user
+      AIRFLOW_WWW_USER_PASSWORD: password
+    volumes:
+      - ./airflow:/opt/airflow
+    networks:
+      - airflow_network
+    ports:
+      - "8080:8080"
+    command: webserver
+
+  airflow-scheduler:
+    image: airflow:latest
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      # Updated SQL Alchemy connection string to point to local PostgreSQL
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:password@host.docker.internal:5432/Scala
+    volumes:
+      - ./airflow:/opt/airflow
+    networks:
+      - airflow_network
+    command: scheduler
+
+networks:
+  airflow_network:
+    driver: bridge
