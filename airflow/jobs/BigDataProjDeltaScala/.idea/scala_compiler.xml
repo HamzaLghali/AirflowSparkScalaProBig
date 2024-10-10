@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="sbt 1" modules="BigDataProjectScalaAirflow,bigdataprojdeltascala_7705" />
+    <profile name="sbt 1" modules="BigDataProjectScalaAirflow,bigdataprojdeltascala_4222,bigdataprojdeltascala_7705" />
   </component>
 </project>
