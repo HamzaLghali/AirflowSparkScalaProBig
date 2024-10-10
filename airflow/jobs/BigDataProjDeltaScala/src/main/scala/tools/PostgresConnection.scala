@@ -3,12 +3,18 @@ package tools
 import java.sql.{Connection, DriverManager, Statement}
 
 
-object PostgresConnection extends App {
+object PostgresConnection{
+
+
+
+  def main(args: Array[String]): Unit = {
+
+  }
 
 
 
 
-  val url = "jdbc:postgresql://localhost:5432/scala"
+  val url = "jdbc:postgresql://localhost:5432/Scala"
   val username = "postgres"
   val password = "password"
   val connection: Connection = DriverManager.getConnection(url, username, password)
