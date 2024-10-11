@@ -1,23 +1,14 @@
 package com
 
-import tools.SparkCore.spark
-import com.github.tototoshi.csv.CSVReader
 import tools.PostgresConnection.statement
-import tools.TechTools.typefile
+import tools.TechTools.{SelectTb, typefile}
 
-import java.io.File
-import scala.reflect.io.Path
-
-
-object TestC {
-
-
-  def main(args: Array[String]): Unit = {
-  }
+object TestC extends App {
 
 
 
-  val filePath = "src/main/scala/com/african_crises.csv"
-  val tyFile  = "csv"
-  typefile(tyFile , filePath)
+  
+
+
+
 }

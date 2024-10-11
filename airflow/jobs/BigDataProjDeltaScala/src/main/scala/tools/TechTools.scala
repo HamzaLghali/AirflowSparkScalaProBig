@@ -46,10 +46,9 @@ object TechTools {
    *
    *
    * */
-  def SelectTb(tbname: String, dbname: String): DataFrame = {
+  def SelectTb()= {
 
-    spark.sql(s"select * from " + dbname + "." + tbname)
-
+      println("ok")
 
   }
 
@@ -204,7 +203,7 @@ object TechTools {
   //
   //  }
 
-
+//function that take type and file path to show the content csv json
     def typefile(typef: String, path: String): Any = {
 
       typef match {
@@ -226,4 +225,9 @@ object TechTools {
       }
     }
 
-  }
+
+
+
+
+
+/*****end****/}
