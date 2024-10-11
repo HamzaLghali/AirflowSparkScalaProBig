@@ -28,30 +28,30 @@ final case class User(
                        name : String,
                        email : String
                      )
-
-object postskunk extends IOApp.Simple {
-
-  def getSession[F[_] : Temporal : Trace : Network : Console](config: Config) =
-    Session.single(
-      host = config.host,
-      port = config.port,
-      user = config.username,
-      password = Some(config.password),
-      database = config.database
-    )
-
-  override def run =
-    ConfigSource.default.at("db").load[Config] match {
-      case Left(errors) =>
-        IO(println(errors))
-      case Right(config) =>
-        getSession[IO](config) use { session =>
-          for {
-            _ <- IO.println("opening a session")
-            timestamp <- session.unique(sql"select current_timestamp".query(timestamptz))
-          } yield ()
-
-        }
-    }
-
-}
+////
+////object postskunk extends IOApp.Simple {
+////
+////  def getSession[F[_] : Temporal : Trace : Network : Console](config: Config) =
+////    Session.single(
+////      host = config.host,
+////      port = config.port,
+////      user = config.username,
+////      password = Some(config.password),
+////      database = config.database
+////    )
+//////
+//////  override def run =
+//////    ConfigSource.default.at("db").load[Config] match {
+//////      case Left(errors) =>
+//////        IO(println(errors))
+//////      case Right(config) =>
+//////        getSession[IO](config) use { session =>
+//////          for {
+//////            _ <- IO.println("opening a session")
+//////            timestamp <- session.unique(sql"select current_timestamp".query(timestamptz))
+//////          } yield ()
+//////
+//////        }
+////    }
+//
+//}

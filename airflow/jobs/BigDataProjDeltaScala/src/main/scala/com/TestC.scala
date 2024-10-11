@@ -7,7 +7,7 @@ object TestC extends App {
 
 
 
-  println("hey")
+ //typefile("json","src/main/resources/data/iris.json")
 
 
 
