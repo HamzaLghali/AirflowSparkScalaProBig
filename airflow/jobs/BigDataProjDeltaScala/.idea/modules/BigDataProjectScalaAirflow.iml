@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module external.linked.project.id="root [file:/D:/ScalaAirflowPro/airflow/jobs/BigDataProjDeltaScala/]" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_23">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/../../target/scala-2.12/classes" />
     <output-test url="file://$MODULE_DIR$/../../target/scala-2.12/test-classes" />
     <exclude-output />
@@ -32,6 +32,7 @@
     <orderEntry type="library" name="sbt: com.github.fommil.netlib:core:1.1.2:jar" level="project" />
     <orderEntry type="library" name="sbt: com.github.luben:zstd-jni:1.5.2-1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.github.rwl:jtransforms:2.4.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.github.tototoshi:scala-csv_2.12:2.0.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.code.findbugs:jsr305:3.0.2:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.code.gson:gson:2.8.6:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.crypto.tink:tink:1.6.1:jar" level="project" />

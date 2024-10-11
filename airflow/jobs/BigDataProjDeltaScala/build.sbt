@@ -31,4 +31,4 @@ libraryDependencies += "com.amazon.deequ" % "deequ" % "2.0.0-spark-3.1"
 
 //libraryDependencies += "com.lihaoyi" %% "requests" % "0.9.0" // sbt
 
-
+libraryDependencies += "com.github.tototoshi" %% "scala-csv" % "2.0.0"

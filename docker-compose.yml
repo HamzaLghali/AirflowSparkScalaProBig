@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   airflow-webserver:
-    image: airflow:latest  # Use 'airf225' if you have a custom image
+    image: airfsca 
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       # Updated SQL Alchemy connection string to point to local PostgreSQL
@@ -20,7 +20,7 @@ services:
     command: webserver
 
   airflow-scheduler:
-    image: airflow:latest
+    image: airfsca
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       # Updated SQL Alchemy connection string to point to local PostgreSQL
