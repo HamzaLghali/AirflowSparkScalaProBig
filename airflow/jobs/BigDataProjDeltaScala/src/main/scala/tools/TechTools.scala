@@ -36,6 +36,23 @@ object TechTools {
 
 
   /**
+   * count rows in db table
+   *
+   * val d =s"select count(*) as cou from crisis_data"
+   * val resultSett:ResultSet=statement.executeQuery(d)
+   * var countrow: Int = 0
+   *
+   * if (resultSett.next()){
+   * countrow = resultSett.getInt("cou")
+   * }
+   * println(countrow)
+   *
+   *
+   *
+   * */
+
+
+  /**
    *
    *
    * This func SelectTb is for selecting tables from db

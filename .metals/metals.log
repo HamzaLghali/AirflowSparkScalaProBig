@@ -708,3 +708,17 @@ INFO: Unsupported notification method: $/setTrace
 2024.10.14 11:24:29 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 0.9s
 2024.10.14 11:24:29 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
 2024.10.14 11:24:30 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.02s
+2024.10.14 12:09:49 WARN  No build server connected
+2024.10.14 12:09:49 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
+2024.10.14 12:09:52 WARN  Invalid text document uri received from build server: file:///D:/ScalaAirflowPro/airflow/jobs/BigDataProjDeltaScala/src/main/scala/com/CopyHelper.scala
+2024.10.14 12:09:52 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 2.76s
+2024.10.14 12:09:52 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
+2024.10.14 12:09:55 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 2.15s
+2024.10.14 12:14:41 WARN  No build server connected
+2024.10.14 12:14:41 INFO  compiling scalaairflowpro_f4dd477a3a (9 scala sources)
+2024.10.14 12:14:43 WARN  Invalid text document uri received from build server: file:///D:/ScalaAirflowPro/airflow/jobs/BigDataProjDeltaScala/src/main/scala/tools/PostgreSqlSink.scala
+2024.10.14 12:14:43 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.8s
+2024.10.14 12:14:43 INFO  compiling scalaairflowpro_f4dd477a3a (9 scala sources)
+2024.10.14 12:14:44 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.69s
+2024.10.14 14:23:18 INFO  compiling scalaairflowpro_f4dd477a3a (9 scala sources)
+2024.10.14 14:23:21 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 2.27s

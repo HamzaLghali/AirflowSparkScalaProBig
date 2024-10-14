@@ -8,14 +8,7 @@ import scalaj.http._
 object JsonManip extends App {
 
 
-
-
   //val res = requests.get("https://randomuser.me/api/")
-
-
-
-
-
 
   // val response: HttpResponse[String] = Http("https://randomuser.me/api/").asString
   //
@@ -24,9 +17,6 @@ object JsonManip extends App {
   // println("Response Body: " + response.body)       // Get response body as string
   // println("Response Headers: " + response.headers) // Get response headers
   // println("Response Cookies: " + response.cookies) // Get cookies (if any)
-
-
-
 
   implicit val formats = DefaultFormats // Needed for JSON parsing
 
