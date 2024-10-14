@@ -46,6 +46,8 @@
     <orderEntry type="library" name="sbt: com.google.flatbuffers:flatbuffers-java:1.12.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.guava:guava:16.0.1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.protobuf:protobuf-java:3.14.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.lihaoyi:geny_2.12:1.0.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.lihaoyi:requests_2.12:0.9.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.ning:compress-lzf:1.1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.ongres.scram:client:2.1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.ongres.scram:common:2.1:jar" level="project" />
@@ -160,10 +162,12 @@
     <orderEntry type="library" name="sbt: org.glassfish.jersey.inject:jersey-hk2:2.34:jar" level="project" />
     <orderEntry type="library" name="sbt: org.javassist:javassist:3.25.0-GA:jar" level="project" />
     <orderEntry type="library" name="sbt: org.jetbrains:annotations:17.0.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.json4s:json4s-ast_2.12:3.7.0-M11:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.json4s:json4s-core_2.12:3.7.0-M11:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.json4s:json4s-ast_2.12:4.1.0-M7:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.json4s:json4s-core_2.12:4.1.0-M7:jar" level="project" />
     <orderEntry type="library" name="sbt: org.json4s:json4s-jackson_2.12:3.7.0-M11:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.json4s:json4s-scalap_2.12:3.7.0-M11:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.json4s:json4s-native-core_2.12:4.1.0-M7:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.json4s:json4s-native_2.12:4.1.0-M7:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.json4s:json4s-scalap_2.12:4.1.0-M7:jar" level="project" />
     <orderEntry type="library" name="sbt: org.lz4:lz4-java:1.8.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.objenesis:objenesis:2.5.1:jar" level="project" />
     <orderEntry type="library" name="sbt: org.postgresql:postgresql:42.6.0:jar" level="project" />
@@ -175,6 +179,7 @@
     <orderEntry type="library" name="sbt: org.scala-lang.modules:scala-xml_2.12:1.2.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.12.19:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-reflect:2.12.19:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalaj:scalaj-http_2.12:2.4.2:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scalanlp:breeze-macros_2.12:0.13.2:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scalanlp:breeze_2.12:0.13.2:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scodec:scodec-bits_2.12:1.1.38:jar" level="project" />
