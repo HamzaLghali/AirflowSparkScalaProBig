@@ -17,16 +17,24 @@ object JsonManip extends App {
 //  println(s"Id : $id")
 //  println(s"Firstname: $Firstname")
 //  println(haircolor)
-  val seq =Seq("id", "firstName", "lastName", "maidenName", "age", "gender", "email", "phone", "username")
+  val seq =Seq("id", "firstName", "lastName", "maidenName", "age", "gender", "email", "phone", "username" ,"hair")
 
 
 
 var i : Int =0
-   while(i<9){
-     val re= (firstResult \ seq(i)).extract[String]
-      println(re)
-      i=i+1
-  }
+   while(i<10){
+     if(seq(i) =="hair") {
+      val seqr =Seq("color","type")
+       val ref = (firstResult \ seq(i) \ seqr(0)).extract[String]
+       val rer = (firstResult \ seq(i) \ seqr(1)).extract[String]
+       println(s"Hair : $ref,$rer")
+       i=i+1
+     }else {
+       val re = (firstResult \ seq(i)).extract[String]
+       println(re)
+       i=i+1
+     }
+   }
 
 
 
