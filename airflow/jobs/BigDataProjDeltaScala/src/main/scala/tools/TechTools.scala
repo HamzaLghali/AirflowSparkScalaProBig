@@ -1,6 +1,6 @@
 package tools
 
-import com.TestC.result
+//import com.TestC.result
 import tools.SparkCore.spark
 import tools.PostgresConnection.{connection, password, statement, url, username}
 
@@ -241,7 +241,7 @@ object TechTools {
 
 
 
-
+/**
   def writeToPostgres(tablename: String){
     result.write
       .format("jdbc")
@@ -252,11 +252,48 @@ object TechTools {
       .mode("append")
       .save()
 
-    println("done") }
+    println("done") }*/
+
+
+  /**
+   *
+   * //val res = requests.get("https://randomuser.me/api/")
+   *
+   * // val response: HttpResponse[String] = Http("https://randomuser.me/api/").asString
+   * //
+   * // // Print the response details
+   * // println("Response Code: " + response.code)       // Get status code
+   * // println("Response Body: " + response.body)       // Get response body as string
+   * // println("Response Headers: " + response.headers) // Get response headers
+   * // println("Response Cookies: " + response.cookies) // Get cookies (if any)
+   *
+   * implicit val formats = DefaultFormats // Needed for JSON parsing
+   *
+   * val response: HttpResponse[String] = Http("https://dummyjson.com/users").asString
+   *
+   * // Parse the JSON response
+   * val json = parse(response.body)
+   *
+   * // Access the first element of the "results" array
+   * val firstResult = (json \ "users")(0)
+   * //
+   * //  Extract fields from the first result
+   * //  val gender = (firstResult \ "gender").extract[String]
+   * val id =( firstResult(0)).extract[Int]
+   * val firstName = (firstResult \ "firstname").extract[String]
+   * //  val lastName = (firstResult \ "name" \ "last").extract[String]
+   * //  val email = (firstResult \ "email").extract[String]
+   * //  val location = (firstResult \ "location" \ "street" \ "number").extract[String]
+   * //
+   * //  println(s"Gender: $gender")
+   * println(s"Name: $firstName")
+   * //  println(email)
+   * //  println(location)
+   */
 
 
 
 
 
 
-/*****end****/}
+  /*****end****/}

@@ -13,6 +13,4 @@ object SparkCore{
                             .master("local[*]")
                             .getOrCreate()
 
-
-
 }

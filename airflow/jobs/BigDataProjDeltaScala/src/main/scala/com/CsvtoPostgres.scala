@@ -1,7 +1,7 @@
 import org.apache.spark.sql.functions._
 import tools.SparkCore.spark
 import tools.PostgresConnection.{password, statement, url, username}
-import tools.TechTools.writeToPostgres
+//import tools.TechTools.writeToPostgres
 
 import java.sql.ResultSet
 
@@ -22,7 +22,7 @@ object CsvtoPostgres{
   res.show()
 
   /**
-  // Writing the data to PostgreSQL using the batch API (since it's not a streaming DataFrame)
+  Writing the data to PostgreSQL using the batch API (since it's not a streaming DataFrame)
   res.write
     .format("jdbc")
     .option("url", url)
