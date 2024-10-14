@@ -1,4 +1,4 @@
-case,cc3,country,year,systemic_crisis,exch_usd,domestic_debt_in_default,sovereign_external_debt_default,gdp_weighted_default,inflation_annual_cpi,independence,currency_crises,inflation_crises,banking_crisis
+casee,cc3,country,year,systemic_crisis,exch_usd,domestic_debt_in_default,sovereign_external_debt_default,gdp_weighted_default,inflation_annual_cpi,independence,currency_crises,inflation_crises,banking_crisis,creationdate
 1,DZA,Algeria,1870,1,0.052264,0,0,0,3.441455696,0,0,0,crisis
 1,DZA,Algeria,1871,0,0.052798,0,0,0,14.14913958,0,0,0,no_crisis
 1,DZA,Algeria,1872,0,0.052274,0,0,0,-3.718592965,0,0,0,no_crisis
@@ -1058,3 +1058,7 @@ case,cc3,country,year,systemic_crisis,exch_usd,domestic_debt_in_default,sovereig
 70,ZWE,Zimbabwe,2011,0,361.9,1,1,0,4.92,1,0,0,no_crisis
 70,ZWE,Zimbabwe,2012,0,361.9,1,1,0,3.72,1,0,0,no_crisis
 70,ZWE,Zimbabwe,2013,0,361.9,1,1,0,1.632,1,0,0,no_crisis
+71,ZWE,Zimbabwe,2013,0,361.9,1,1,0,1.632,1,0,0,no_crisis
+72,ZWE,Zimbabwe,2013,0,361.9,1,1,0,1.632,1,0,0,no_crisis
+
+

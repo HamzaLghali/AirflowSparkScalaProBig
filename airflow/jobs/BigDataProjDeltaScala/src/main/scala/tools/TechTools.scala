@@ -1,13 +1,10 @@
 package tools
 
-import org.apache.spark.sql.DataFrame
+import com.TestC.result
 import tools.SparkCore.spark
-import tools.PostgresConnection.{connection, statement}
-import org.apache.spark.sql.DataFrame
-
+import tools.PostgresConnection.{connection, password, statement, url, username}
 
 import java.sql.ResultSet
-import scala.reflect.io.Path
 
 
 
@@ -224,6 +221,21 @@ object TechTools {
           "Unknown format"
       }
     }
+
+
+
+
+  def writeToPostgres(tablename: String){
+    result.write
+      .format("jdbc")
+      .option("url", url)
+      .option("dbtable", tablename)
+      .option("user", username)
+      .option("password", password)
+      .mode("append")
+      .save()
+
+    println("done") }
 
 
 

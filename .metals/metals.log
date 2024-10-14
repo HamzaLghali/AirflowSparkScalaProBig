@@ -660,3 +660,51 @@ INFO: Unsupported notification method: $/setTrace
 2024.10.14 10:32:22 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.33s
 2024.10.14 10:35:35 INFO  compiling scalaairflowpro_f4dd477a3a (9 scala sources)
 2024.10.14 10:35:36 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.62s
+2024.10.14 10:43:19 WARN  No build server connected
+2024.10.14 10:43:19 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
+2024.10.14 10:43:20 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.39s
+2024.10.14 10:43:20 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
+2024.10.14 10:43:22 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.23s
+2024.10.14 10:43:23 WARN  No build server connected
+2024.10.14 10:43:23 INFO  compiling scalaairflowpro_f4dd477a3a (9 scala sources)
+2024.10.14 10:43:24 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.02s
+2024.10.14 10:43:24 INFO  compiling scalaairflowpro_f4dd477a3a (9 scala sources)
+2024.10.14 10:43:25 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.28s
+2024.10.14 10:43:40 WARN  No build server connected
+2024.10.14 10:43:40 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
+2024.10.14 10:43:41 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.05s
+2024.10.14 10:43:41 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
+2024.10.14 10:43:42 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.12s
+2024.10.14 10:51:52 WARN  No build server connected
+2024.10.14 10:51:52 INFO  compiling scalaairflowpro_f4dd477a3a (11 scala sources)
+2024.10.14 10:51:53 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.23s
+2024.10.14 10:51:53 INFO  compiling scalaairflowpro_f4dd477a3a (11 scala sources)
+2024.10.14 10:51:55 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.38s
+2024.10.14 11:00:07 WARN  No build server connected
+2024.10.14 11:00:07 INFO  compiling scalaairflowpro_f4dd477a3a (11 scala sources)
+2024.10.14 11:00:09 WARN  Invalid text document uri received from build server: file:///D:/ScalaAirflowPro/airflow/jobs/BigDataProjDeltaScala/src/main/scala/com/SavingToPostgres.scala
+2024.10.14 11:00:09 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.39s
+2024.10.14 11:00:09 INFO  compiling scalaairflowpro_f4dd477a3a (11 scala sources)
+2024.10.14 11:00:11 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.47s
+2024.10.14 11:17:48 WARN  No build server connected
+2024.10.14 11:17:48 INFO  compiling scalaairflowpro_f4dd477a3a (12 scala sources)
+2024.10.14 11:17:49 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.21s
+2024.10.14 11:17:49 INFO  compiling scalaairflowpro_f4dd477a3a (12 scala sources)
+2024.10.14 11:17:50 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.22s
+2024.10.14 11:18:14 WARN  No build server connected
+2024.10.14 11:18:14 INFO  compiling scalaairflowpro_f4dd477a3a (12 scala sources)
+2024.10.14 11:18:15 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.09s
+2024.10.14 11:18:15 INFO  compiling scalaairflowpro_f4dd477a3a (12 scala sources)
+2024.10.14 11:18:16 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 0.98s
+2024.10.14 11:24:22 WARN  No build server connected
+2024.10.14 11:24:22 INFO  compiling scalaairflowpro_f4dd477a3a (11 scala sources)
+2024.10.14 11:24:24 WARN  Invalid text document uri received from build server: file:///D:/ScalaAirflowPro/airflow/jobs/BigDataProjDeltaScala/src/main/scala/com/postskunk.scala
+2024.10.14 11:24:24 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.33s
+2024.10.14 11:24:24 INFO  compiling scalaairflowpro_f4dd477a3a (11 scala sources)
+2024.10.14 11:24:25 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.21s
+2024.10.14 11:24:28 WARN  No build server connected
+2024.10.14 11:24:28 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
+2024.10.14 11:24:29 WARN  Invalid text document uri received from build server: file:///D:/ScalaAirflowPro/airflow/jobs/BigDataProjDeltaScala/src/main/scala/com/Dbconnection.scala
+2024.10.14 11:24:29 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 0.9s
+2024.10.14 11:24:29 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
+2024.10.14 11:24:30 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.02s
