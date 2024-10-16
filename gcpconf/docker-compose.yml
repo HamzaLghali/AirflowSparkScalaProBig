@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  deltaio:
+    image: deltaio/delta:latest
+    container_name: delta-lake
+    ports:
+      - "9000:9000"
+    environment:
+      - DELTA_HOME=/delta
+    volumes:
+      - ./data:/delta/data
+    networks:
+      - delta_network
+
+networks:
+  delta_network:
+    driver: bridge

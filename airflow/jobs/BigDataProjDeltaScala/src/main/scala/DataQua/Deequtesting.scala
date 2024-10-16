@@ -17,26 +17,6 @@ import com.amazon.deequ.VerificationResult.checkResultsAsDataFrame
 
 object Deequtesting extends App {
 
-//  val col= Seq("id","name","addr")
-//
-//  val data_val = Seq(
-//
-//    (1,"one","casa"),
-//    (2,"two", "agadir")
-//
-//  )
-//
-//
-//  val rdd = spark.sparkContext.parallelize(data_val)
-//  val data=spark.createDataFrame(rdd).toDF(col: *)
-//  display(data)
-//
-//
-//  val session = SparkSession.builder()
-//    .master("local")
-//    .appName("test")
-//    .config("spark.ui.enabled", "false")
-//    .getOrCreate()
-//  session.sparkContext.setCheckpointDir(System.getProperty("java.io.tmpdir"))
+println("test")
 
 }

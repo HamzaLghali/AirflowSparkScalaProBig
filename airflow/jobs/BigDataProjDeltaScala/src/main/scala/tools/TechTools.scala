@@ -1,13 +1,10 @@
 package tools
 
-import org.apache.spark.sql.DataFrame
+//import com.TestC.result
 import tools.SparkCore.spark
-import tools.PostgresConnection.{connection, statement}
-import org.apache.spark.sql.DataFrame
-
+import tools.PostgresConnection.{connection, password, statement, url, username}
 
 import java.sql.ResultSet
-import scala.reflect.io.Path
 
 
 
@@ -39,6 +36,23 @@ object TechTools {
 
 
   /**
+   * count rows in db table
+   *
+   * val d =s"select count(*) as cou from crisis_data"
+   * val resultSett:ResultSet=statement.executeQuery(d)
+   * var countrow: Int = 0
+   *
+   * if (resultSett.next()){
+   * countrow = resultSett.getInt("cou")
+   * }
+   * println(countrow)
+   *
+   *
+   *
+   * */
+
+
+  /**
    *
    *
    * This func SelectTb is for selecting tables from db
@@ -56,33 +70,33 @@ object TechTools {
 
 
 
-  //
-  //  def DisplayTableData(tableName: String): Unit = {
-  //    try {
-  //      if (tableName == null || tableName.isEmpty) {
-  //        throw new IllegalArgumentException("Table name cannot be null or empty")
-  //      }
-  //
-  //      val query = s"SELECT * FROM $tableName"
-  //      println(s"Executing query: $query")
-  //
-  //      val resultSet: ResultSet = statement.executeQuery(query)
-  //
-  //      while (resultSet.next()) {
-  //        val columnCount = resultSet.getMetaData.getColumnCount
-  //        for (i <- 1 to columnCount) {
-  //          print(resultSet.getString(i) + "\t")
-  //        }
-  //        println()
-  //      }
-  //    } catch {
-  //      case error: Exception =>
-  //        error.printStackTrace()
-  //        println("An error occurred: " + error.getMessage)
-  //    } finally {
-  //      println("Finally block executed")
-  //    }
-  //  }
+
+    def DisplayTableData(tableName: String): Unit = {
+      try {
+        if (tableName == null || tableName.isEmpty) {
+          throw new IllegalArgumentException("Table name cannot be null or empty")
+        }
+
+        val query = s"SELECT * FROM $tableName"
+        println(s"Executing query: $query")
+
+        val resultSet: ResultSet = statement.executeQuery(query)
+
+        while (resultSet.next()) {
+          val columnCount = resultSet.getMetaData.getColumnCount
+          for (i <- 1 to columnCount) {
+            print(resultSet.getString(i) + "\t")
+          }
+          println()
+        }
+      } catch {
+        case error: Exception =>
+          error.printStackTrace()
+          println("An error occurred: " + error.getMessage)
+      } finally {
+        println("Finally block executed")
+      }
+    }
 
 
   /**
@@ -227,7 +241,59 @@ object TechTools {
 
 
 
+/**
+  def writeToPostgres(tablename: String){
+    result.write
+      .format("jdbc")
+      .option("url", url)
+      .option("dbtable", tablename)
+      .option("user", username)
+      .option("password", password)
+      .mode("append")
+      .save()
+
+    println("done") }*/
+
+
+  /**
+   *
+   * //val res = requests.get("https://randomuser.me/api/")
+   *
+   * // val response: HttpResponse[String] = Http("https://randomuser.me/api/").asString
+   * //
+   * // // Print the response details
+   * // println("Response Code: " + response.code)       // Get status code
+   * // println("Response Body: " + response.body)       // Get response body as string
+   * // println("Response Headers: " + response.headers) // Get response headers
+   * // println("Response Cookies: " + response.cookies) // Get cookies (if any)
+   *
+   * implicit val formats = DefaultFormats // Needed for JSON parsing
+   *
+   * val response: HttpResponse[String] = Http("https://dummyjson.com/users").asString
+   *
+   * // Parse the JSON response
+   * val json = parse(response.body)
+   *
+   * // Access the first element of the "results" array
+   * val firstResult = (json \ "users")(0)
+   * //
+   * //  Extract fields from the first result
+   * //  val gender = (firstResult \ "gender").extract[String]
+   * val id =( firstResult(0)).extract[Int]
+   * val firstName = (firstResult \ "firstname").extract[String]
+   * //  val lastName = (firstResult \ "name" \ "last").extract[String]
+   * //  val email = (firstResult \ "email").extract[String]
+   * //  val location = (firstResult \ "location" \ "street" \ "number").extract[String]
+   * //
+   * //  println(s"Gender: $gender")
+   * println(s"Name: $firstName")
+   * //  println(email)
+   * //  println(location)
+   */
 
 
 
-/*****end****/}
+
+
+
+  /*****end****/}

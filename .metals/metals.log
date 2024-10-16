@@ -1024,6 +1024,7 @@ INFO: Unsupported notification method: $/setTrace
 2024.10.16 15:30:28 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.95s
 2024.10.16 15:30:28 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
 2024.10.16 15:30:30 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.46s
+<<<<<<< HEAD
 2024.10.16 15:32:07 WARN  No build server connected
 2024.10.16 15:32:07 INFO  compiling scalaairflowpro_f4dd477a3a (9 scala sources)
 2024.10.16 15:32:10 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 2.44s
@@ -1045,3 +1046,5 @@ SLF4J(I): Actual provider is of type [scribe.slf4j.ScribeServiceProvider@438e485
 2024.10.16 15:41:10 WARN  Flyway upgrade recommended: H2 2.3.230 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.220.
 2024.10.16 15:41:10 WARN  no build tool detected in workspace 'D:\ScalaAirflowPro'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
 2024.10.16 15:41:11 WARN  Build server is not auto-connectable.
+=======
+>>>>>>> feature/dev

@@ -52,5 +52,5 @@ object Collections extends App {
 
 
 
-  mapValues
+  listToMap
 }
