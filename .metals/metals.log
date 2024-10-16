@@ -1015,3 +1015,12 @@ INFO: Unsupported notification method: $/setTrace
 2024.10.16 15:26:27 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 2.67s
 2024.10.16 15:27:25 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
 2024.10.16 15:27:30 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 5.21s
+2024.10.16 15:28:23 WARN  No build server connected
+2024.10.16 15:28:23 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
+2024.10.16 15:28:27 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 3.43s
+2024.10.16 15:28:27 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
+2024.10.16 15:28:30 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 3.38s
+2024.10.16 15:30:26 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
+2024.10.16 15:30:28 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.95s
+2024.10.16 15:30:28 INFO  compiling scalaairflowpro_f4dd477a3a (10 scala sources)
+2024.10.16 15:30:30 INFO  time: compiled ScalaAirflowPro_f4dd477a3a in 1.46s
