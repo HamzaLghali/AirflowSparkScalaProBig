@@ -1,3 +1,4 @@
 airflow/logs
-/.metals/metals.log
-/airflow/jobs/BigDataProjDeltaScala/src/main/scala/GcpConf
+.metals/metals.log
+airflow/jobs/BigDataProjDeltaScala/src/main/scala/GcpConf
+
