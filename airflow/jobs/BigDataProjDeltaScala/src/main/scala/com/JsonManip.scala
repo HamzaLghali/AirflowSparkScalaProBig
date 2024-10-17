@@ -11,15 +11,8 @@ object JsonManip extends App {
   val response: HttpResponse[String] = Http("https://dummyjson.com/users").asString
   val json = parse(response.body)
   val firstResult = (json \ "users")(0)
-//  val id =(firstResult \ "id").extract[Int]
-//  val Firstname = (firstResult \ "firstName").extract[String]
-//  val haircolor = (firstResult \"hair"\"color").extract[String]
-//  println(s"Id : $id")
-//  println(s"Firstname: $Firstname")
-//  println(haircolor)
+
   val seq =Seq("id", "firstName", "lastName", "maidenName", "age", "gender", "email", "phone", "username" ,"hair")
-
-
 
 var i : Int =0
    while(i<10){

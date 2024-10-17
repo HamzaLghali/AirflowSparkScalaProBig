@@ -292,7 +292,77 @@ object TechTools {
    */
 
 
-
+/**
+ * package com
+ *
+ *
+ * import org.apache.spark.sql.functions.lit
+ * import org.apache.spark.sql.{Row, SparkSession}
+ * import org.json4s._
+ * import org.json4s.native.JsonMethods._
+ * import org.json4s.DefaultFormats
+ * import scalaj.http.{Http, HttpResponse}
+ *
+ * import java.time.LocalDateTime
+ *
+ * object GcpJsonManip {
+ *
+ * def main(args: Array[String]): Unit = {
+ *
+ *
+ * val spark = SparkSession.builder()
+ * .appName("DeltaLakeProject")
+ * .master("local[*]")
+ * .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension")
+ * .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
+ * .config("spark.hadoop.fs.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem")
+ * .config("spark.hadoop.google.cloud.auth.service.account.enable", "true")
+ * .config("spark.hadoop.google.cloud.auth.service.account.json.keyfile", "src/main/scala/configurations/effective-cacao-438911-u6-f47ac92e8947.json")
+ * .getOrCreate()
+ *
+ * implicit val formats = DefaultFormats
+ *
+ * val response: HttpResponse[String] = Http("https://dummyjson.com/users").asString
+ * val json = parse(response.body)
+ *
+ * val seq = Seq("id", "firstName", "lastName", "age", "gender", "email", "phone", "username", "password", "birthDate", "ip", "macAddress", "university")
+ * var extractedData = Seq[Row]()
+ *
+ * // Loop to extract data for each user
+ * var j: Int = 0
+ * while (j <=2) {
+ * val firstResult = (json \ "users")(2)
+ * val rowValues = seq.map { field =>
+ * val value = (firstResult \ field)
+ * value.extractOpt[String].getOrElse(value.extractOpt[Int])
+ * }
+ * extractedData = extractedData :+ Row.fromSeq(rowValues)
+ * j += 1
+ * }
+ *
+ * // Create a schema for the DataFrame
+ * val schema = org.apache.spark.sql.types.StructType(
+ * seq.map(fieldName => org.apache.spark.sql.types.StructField(fieldName, org.apache.spark.sql.types.StringType, nullable = true))
+ * )
+ *
+ * // Convert the data into a DataFrame
+ * val df = spark.createDataFrame(spark.sparkContext.parallelize(extractedData), schema)
+ *
+ * // Show the DataFrame (for debugging)
+ * df.show()
+ *
+ * val currentDate = LocalDateTime.now().toString
+ *
+ * val Newdf = df.withColumn("CreationDate", lit(currentDate))
+ * // Write the DataFrame to GCS in JSON format
+ * Newdf.write
+ * .format("json")
+ * .save("gs://bigdatabuck/bronze/usersRepo/")
+ *
+ * println("Data saved to GCS in JSON format!")
+ * }
+ * }
+ * */
 
 
 
