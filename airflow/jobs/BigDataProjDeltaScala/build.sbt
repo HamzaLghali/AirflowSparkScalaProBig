@@ -37,3 +37,5 @@ libraryDependencies ++= Seq(
 
 )
 
+libraryDependencies += "com.google.cloud.bigdataoss" % "gcs-connector" % "hadoop3-2.2.5"
+libraryDependencies += "io.delta" %% "delta-core" % "2.1.0"
