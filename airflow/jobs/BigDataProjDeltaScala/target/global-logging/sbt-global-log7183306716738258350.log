@@ -1,0 +1,95 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(early(addPluginSbtFile="""C:\Users\vanha\AppData\Local\Temp\idea2.sbt"""), None, None)
+[debug] > Exec(addPluginSbtFile="""C:\Users\vanha\AppData\Local\Temp\idea2.sbt""", None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.10.1 (Oracle Corporation Java 1.8.0_421)
+[debug] Load.defaultLoad until apply took 423.9025ms
+[debug]           Load.loadUnit: plugins took 407.5785ms
+[debug]           Load.loadUnit: defsScala took 0.9843ms
+[debug] [Loading] Scanning directory D:\ScalaAirflowPro\airflow\jobs\BigDataProjDeltaScala\project
+[debug]             Load.loadUnit: mkEval took 22.5ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in D:\ScalaAirflowPro\airflow\jobs\BigDataProjDeltaScala\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 46.4568 ms
+[info] loading settings for project bigdataprojdeltascala-build from plugins.sbt,idea2.sbt ...
+[debug]               Load.resolveProject(bigdataprojdeltascala-build) took 176.1164ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id bigdataprojdeltascala-build, base: D:\ScalaAirflowPro\airflow\jobs\BigDataProjDeltaScala\project, plugins: List(<none>))) took 233.721ms
+[debug] [Loading] Done in D:\ScalaAirflowPro\airflow\jobs\BigDataProjDeltaScala\project, returning: (bigdataprojdeltascala-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 7886.7526ms
+[debug]           Load.loadUnit: cleanEvalClasses took 16.1108ms
+[debug]         Load.loadUnit(file:/D:/ScalaAirflowPro/airflow/jobs/BigDataProjDeltaScala/project/, ...) took 8324.5266ms
+[debug]       Load.apply: load took 8657.1757ms
+[debug]       Load.apply: resolveProjects took 25.7014ms
+[debug]       Load.apply: finalTransforms took 111.2606ms
+[debug]       Load.apply: config.delegates took 15.6953ms
+[debug]       Load.apply: Def.make(settings)... took 1068.1443ms
+[debug]       Load.apply: structureIndex took 247.1641ms
+[debug]       Load.apply: mkStreams took 2.8236ms
+[info] loading project definition from D:\ScalaAirflowPro\airflow\jobs\BigDataProjDeltaScala\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 14801.8963ms
+[debug]     Load.loadUnit: defsScala took 0.0063ms
+[debug] [Loading] Scanning directory D:\ScalaAirflowPro\airflow\jobs\BigDataProjDeltaScala
+[debug]       Load.loadUnit: mkEval took 0.3624ms
+[debug] [Loading] Found root project root w/ remaining 
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbtassembly.AssemblyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbtassembly.AssemblyPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.SemanticdbPlugin,sbt.plugins.JUnitXmlReportPlugin,sbtassembly.AssemblyPlugin,org.jetbrains.sbt.IdeaShellPlugin,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 4.0762 ms
+[info] loading settings for project root from build.sbt ...
+[debug]         Load.resolveProject(root) took 141.7306ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id root, base: D:\ScalaAirflowPro\airflow\jobs\BigDataProjDeltaScala, plugins: List(<none>))) took 147.8327ms
+[debug] [Loading] Done in D:\ScalaAirflowPro\airflow\jobs\BigDataProjDeltaScala, returning: (root)
+[debug]     Load.loadUnit: loadedProjectsRaw took 6508.5332ms
+[debug]     Load.loadUnit: cleanEvalClasses took 32.0537ms
+[debug]   Load.loadUnit(file:/D:/ScalaAirflowPro/airflow/jobs/BigDataProjDeltaScala/, ...) took 21344.5725ms
+[debug] Load.apply: load took 21371.7651ms
+[debug] Load.apply: resolveProjects took 0.5645ms
+[debug] Load.apply: finalTransforms took 82.0481ms
+[debug] Load.apply: config.delegates took 0.4464ms
+[debug] Load.apply: Def.make(settings)... took 243.3396ms
+[debug] Load.apply: structureIndex took 48.3785ms
+[debug] Load.apply: mkStreams took 0.0037ms
+[info] set current project to BigDataProjectScalaAirflow (in build file:/D:/ScalaAirflowPro/airflow/jobs/BigDataProjDeltaScala/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(idea-shell, None, None)

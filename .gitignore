@@ -1,9 +1,5 @@
 airflow/logs
-<<<<<<< HEAD
-.metals/metals.log
+.metals/
 airflow/jobs/BigDataProjDeltaScala/src/main/scala/GcpConf
-
-=======
-/.metals/metals.log
-/airflow/jobs/BigDataProjDeltaScala/src/main/scala/GcpConf
->>>>>>> feature/dev
+airflow/jobs/BigDataProjDeltaScala/src/main/scala/configurations/
+airflow/jobs/BigDataProjDeltaScala/target/
