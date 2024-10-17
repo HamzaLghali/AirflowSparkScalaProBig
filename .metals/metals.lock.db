@@ -1,14 +1,6 @@
 #FileLock
-<<<<<<< HEAD
-#Wed Oct 16 15:47:32 WEST 2024
-server=localhost\:50897
+#Thu Oct 17 11:07:53 WEST 2024
+server=localhost\:56459
 hostName=localhost
 method=file
-id=19295c6911a60f1d7f48310a75a6c4192c6ba312a8b
-=======
-#Wed Oct 16 15:25:57 WEST 2024
-server=localhost\:53351
-hostName=localhost
-method=file
-id=1928a19640ea826eec7981fb2015e81444714e6b821
->>>>>>> feature/dev
+id=19299cc6b6be3eb3293a9a95d914a3663e1289fb10b
