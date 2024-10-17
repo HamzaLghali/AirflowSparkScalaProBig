@@ -30,7 +30,7 @@ object GcpJsonManip {
     val seq = Seq("id", "firstName", "lastName", "age", "gender", "email", "phone", "username", "password", "birthDate", "ip", "macAddress")
     var extractedData = Seq[Row]()
 
-    // Loop to extract data for each user
+
     var j: Int = 0
     while (j <=2) {
       val firstResult = (json \ "users")(j)
@@ -42,15 +42,12 @@ object GcpJsonManip {
       j += 1
     }
 
-    // Create a schema for the DataFrame
     val schema = org.apache.spark.sql.types.StructType(
       seq.map(fieldName => org.apache.spark.sql.types.StructField(fieldName, org.apache.spark.sql.types.StringType, nullable = true))
     )
 
-    // Convert the data into a DataFrame
     val df = spark.createDataFrame(spark.sparkContext.parallelize(extractedData), schema)
 
-    // Show the DataFrame (for debugging)
     df.show()
     val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
@@ -59,7 +56,6 @@ object GcpJsonManip {
     val Newdf = df.withColumnRenamed("id","userUID").withColumn("CreationDate", lit(currentDate))
 
     Newdf.show()
-     //Write the DataFrame to GCS in JSON format
 //        Newdf.write
 //          .format("json")
 //          .save("gs://bigdatabuckv2/bronze//users/")

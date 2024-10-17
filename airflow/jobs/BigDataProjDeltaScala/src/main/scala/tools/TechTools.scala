@@ -317,7 +317,6 @@ object TechTools {
  * .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
  * .config("spark.hadoop.fs.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem")
  * .config("spark.hadoop.google.cloud.auth.service.account.enable", "true")
- * .config("spark.hadoop.google.cloud.auth.service.account.json.keyfile", "src/main/scala/configurations/effective-cacao-438911-u6-f47ac92e8947.json")
  * .getOrCreate()
  *
  * implicit val formats = DefaultFormats
