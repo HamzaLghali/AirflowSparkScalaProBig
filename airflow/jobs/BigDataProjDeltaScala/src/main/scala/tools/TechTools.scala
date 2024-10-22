@@ -1,6 +1,7 @@
 package tools
 
 //import com.TestC.result
+import org.apache.spark.sql.DataFrame
 import tools.SparkCore.spark
 import tools.PostgresConnection.{connection, password, statement, url, username}
 
@@ -36,8 +37,6 @@ object TechTools {
 
 
   /**
-   * count rows in db table
-   *
    * val d =s"select count(*) as cou from crisis_data"
    * val resultSett:ResultSet=statement.executeQuery(d)
    * var countrow: Int = 0
@@ -46,49 +45,41 @@ object TechTools {
    * countrow = resultSett.getInt("cou")
    * }
    * println(countrow)
-   *
-   *
-   *
-   * */
+   **/
 
 
-  /**
-   *
-   *
-   * This func SelectTb is for selecting tables from db
-   * such as select statement
-   *
-   *
-   * */
-  def SelectTb()= {
-
-      println("ok")
-
+  /** This func SelectTb is for selecting tables from db such as select statement **/
+  def loadTable(tableName: String): DataFrame = {
+    spark.read
+      .format("jdbc")
+      .option("url", url)
+      .option("dbtable", tableName) // Specify the table name
+      .option("user", username)
+      .option("password", password)
+      .option("driver", "org.postgresql.Driver")
+      .load()
   }
 
 
-
-
-
-
-    def DisplayTableData(tableName: String): Unit = {
+    def displayTableData(tableName: String): Unit = {
       try {
         if (tableName == null || tableName.isEmpty) {
           throw new IllegalArgumentException("Table name cannot be null or empty")
         }
 
-        val query = s"SELECT * FROM $tableName"
-        println(s"Executing query: $query")
+        spark.read
+          .format("jdbc")
+          .option("url", url)
+          .option("dbtable", tableName) // Specify the table name
+          .option("user", username)
+          .option("password", password)
+          .option("driver", "org.postgresql.Driver")
+          .load()
 
-        val resultSet: ResultSet = statement.executeQuery(query)
+        val tableDf: DataFrame = loadTable(tableName)
 
-        while (resultSet.next()) {
-          val columnCount = resultSet.getMetaData.getColumnCount
-          for (i <- 1 to columnCount) {
-            print(resultSet.getString(i) + "\t")
-          }
-          println()
-        }
+        tableDf.show()
+
       } catch {
         case error: Exception =>
           error.printStackTrace()
@@ -100,9 +91,6 @@ object TechTools {
 
 
   /**
-   *
-   *
-   *
    * ***************************************************************************** *
    * ***This part is for reading from different file format (csv, parquet,json)*** *
    * ***************************************************************************** *
@@ -128,11 +116,7 @@ object TechTools {
    *
    *
    * csvDf.show()
-   *
-   *
    * parquetDf.show()
-   *
-   *
    * jsonDf.show()
    *
    *
@@ -238,8 +222,6 @@ object TechTools {
           "Unknown format"
       }
     }
-
-
 
 /**
   def writeToPostgres(tablename: String){
