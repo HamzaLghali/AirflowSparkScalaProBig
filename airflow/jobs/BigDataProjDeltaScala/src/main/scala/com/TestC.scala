@@ -51,15 +51,30 @@ object TestC extends App{
       .withColumn("flagStatus", lit(true))
       .withColumn("UID", concat_ws("",col("product_id").cast("string"),length(col("product_name")),regexp_replace(col("CreationDate"),"[- :]","")))
 
-    val failedOrders = item.where(item.col("payment_status")==="failed")
 
-    val SilverItem = item.where(item.col("payment_status")==="failed")
+    val failedOrders = item.where(item.col("payment_status")==="failed")
       .withColumn("OrderDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
       .withColumn("CreationDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
       .withColumn("UpdateDate", lit("2999-12-31 23:59:59").cast("timestamp"))
+      .withColumn("flagStatus", lit(false))
       .withColumn("UID", concat_ws("",col("item_id").cast("string"),col("client_id").cast("string"),regexp_replace(col("CreationDate"),"[- :]","")))
 
-  SilverItem.show()
+  val paidOrders = item.where(item.col("payment_status")==="paid")
+    .withColumn("OrderDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
+    .withColumn("CreationDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
+    .withColumn("UpdateDate", lit("2999-12-31 23:59:59").cast("timestamp"))
+    .withColumn("flagStatus", lit(true))
+    .withColumn("UID", concat_ws("",col("item_id").cast("string"),col("client_id").cast("string"),regexp_replace(col("CreationDate"),"[- :]","")))
+
+  val pendingOrders = item.where(item.col("payment_status")==="pending")
+    .withColumn("OrderDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
+    .withColumn("CreationDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
+    .withColumn("UpdateDate", lit("2999-12-31 23:59:59").cast("timestamp"))
+    .withColumn("UID", concat_ws("",col("item_id").cast("string"),col("client_id").cast("string"),regexp_replace(col("CreationDate"),"[- :]","")))
+
+  failedOrders.union(paidOrders).show()
+  //s.show()
+//failedOrders.show()
 
       //item.show()
 
