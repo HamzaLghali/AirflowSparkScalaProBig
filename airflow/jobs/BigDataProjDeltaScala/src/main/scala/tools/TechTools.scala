@@ -1,12 +1,12 @@
 package tools
 
-//import com.TestC.result
 import org.apache.spark.sql.DataFrame
 import tools.SparkCore.spark
-import tools.PostgresConnection.{connection, password, statement, url, username}
-
-import java.sql.ResultSet
-
+import tools.PostgresConnection.{ password, url, username}
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit.SECONDS
+import scala.util.Random
 
 
 
@@ -344,6 +344,32 @@ object TechTools {
  * }
  * }
  * */
+
+
+def randomLong(maxExclusive: Long): Long = {
+  (Random.nextDouble() * maxExclusive).toLong
+}
+  // Method to generate a random date and time between two given dates
+def generateRandomDateTimeBetween(startDate: String, endDate: String, format: String = "yyyy-MM-dd HH:mm:ss"): String = {
+  // Define the formatter
+  val dateFormatter = DateTimeFormatter.ofPattern(format)
+
+  // Parse the start and end dates as LocalDateTime
+  val start = LocalDateTime.parse(startDate, dateFormatter)
+  val end = LocalDateTime.parse(endDate, dateFormatter)
+
+  // Get the number of seconds between the two dates
+  val secondsBetween = SECONDS.between(start, end)
+
+  // Generate a random number of seconds to add to the start date
+  val randomSeconds = randomLong(secondsBetween)
+
+  // Generate the random date-time
+  val randomDateTime = start.plusSeconds(randomSeconds)
+
+  // Return the random date-time as a formatted string
+  randomDateTime.format(dateFormatter)
+}
 
 
 
