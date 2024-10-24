@@ -15,7 +15,7 @@ object TestC extends App{
     val clientpurs =client.join(item, client.col("client_id")===item.col("client_id"))
       .select(client.col("client_id"), client.col("first_name")
         , client.col("last_name"),item.col("item_id"),item.col("payment_status"))
-      .filter(item.col("payment_status") === "failed")
+      .count()
 
 
     val clientproducts =client.join(item.join(lineitem.join(product, lineitem.col("product_id")===
@@ -42,7 +42,6 @@ object TestC extends App{
 
 
    val randomDateTime = generateRandomDateTimeBetween("2020-01-01 00:00:00", "2024-12-31 23:59:59")
-  //println(randomDateTime)
 
 
     val SilverProduct= product
@@ -70,13 +69,14 @@ object TestC extends App{
     .withColumn("OrderDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
     .withColumn("CreationDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
     .withColumn("UpdateDate", lit("2999-12-31 23:59:59").cast("timestamp"))
+    .withColumn("flagStatus", lit(true))
     .withColumn("UID", concat_ws("",col("item_id").cast("string"),col("client_id").cast("string"),regexp_replace(col("CreationDate"),"[- :]","")))
 
-  failedOrders.union(paidOrders).show()
-  //s.show()
-//failedOrders.show()
 
-      //item.show()
+  val SilverOrders =failedOrders.union(paidOrders).union(pendingOrders)
+
+  println(SilverClientTR.join(SilverOrders, SilverClientTR.col("client_id")===SilverOrders.col("client_id")).count(), clientpurs)
+
 
 
 
