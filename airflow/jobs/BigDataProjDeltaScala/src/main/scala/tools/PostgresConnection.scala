@@ -7,11 +7,11 @@ object PostgresConnection{
 
 
   val Scala = "Scala"
-  val ScalaManip = "Scala"
+  val ScalaManip = "ScalaManip"
   val SalesSilver = "SalesSilver"
   val SalesGold = "SalesGold"
 
-  val url = s"jdbc:postgresql://localhost:5432/ScalaManip"
+  val url = s"jdbc:postgresql://localhost:5432/Scala"
   val username = "postgres"
   val password = "password"
   val connection: Connection = DriverManager.getConnection(url, username, password)
