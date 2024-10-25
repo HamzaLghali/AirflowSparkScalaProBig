@@ -2,4 +2,4 @@
 
 
 
-echo "im here $0"
+ls -l

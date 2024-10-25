@@ -1,38 +1,19 @@
 version: '3.8'
 
-services:
-  airflow-webserver:
-    image: airfsca 
-    environment:
-      AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      # Updated SQL Alchemy connection string to point to local PostgreSQL
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:password@host.docker.internal:5432/Scala
-      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
-      AIRFLOW__API__AUTH_BACKEND: "airflow.api.auth.backend.basic_auth"
-      AIRFLOW_WWW_USER_USERNAME: user
-      AIRFLOW_WWW_USER_PASSWORD: password
-    volumes:
-      - ./airflow:/opt/airflow
-    networks:
-      - airflow_network
-    ports:
-      - "8080:8080"
-    command: webserver
 
-  airflow-scheduler:
-    image: airfsca
+services:
+  deltaio:
+    image: deltaio/delta-docker:latest
+    container_name: delta-lake
+    ports:
+      - "9000:9000"
     environment:
-      AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      # Updated SQL Alchemy connection string to point to local PostgreSQL
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:password@host.docker.internal:5432/Scala
+      - DELTA_HOME=/delta
     volumes:
-      - ./airflow:/opt/airflow
+      - ./data:/delta/data
     networks:
-      - airflow_network
-    command: scheduler
+      - delta_network
 
 networks:
-  airflow_network:
+  delta_network:
     driver: bridge
-
-

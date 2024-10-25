@@ -16,7 +16,7 @@ object CsvtoPostgres{
   val res = csvD
     .withColumn("id", col("id").cast("int")) // Cast 'id' to integer
     .withColumn("datecre", to_date(col("datecre"), "yyyy-MM-dd"))
-    .where(col("id")>1)
+
 
   res.printSchema()
   res.show()

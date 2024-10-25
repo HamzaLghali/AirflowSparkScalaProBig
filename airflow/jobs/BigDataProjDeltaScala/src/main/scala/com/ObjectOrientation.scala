@@ -19,7 +19,6 @@ object ObjectOrientation extends App {
   val aDog = new Dog("Lassie")
 
   // constructor arguments are NOT fields: need to put a val before the constructor argument
-  aDog.name
 
   // subtype polymorphism
   val aDeclaredAnimal: Animal = new Dog("Hachi")

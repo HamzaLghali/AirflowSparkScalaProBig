@@ -50,7 +50,7 @@ object SalesGcp extends App{
 
   clientGc.join(itemGc, clientGc.col("client_id")=== itemGc.col("client_id")).show(120)
 
-  clientGc
+
 
 
 }

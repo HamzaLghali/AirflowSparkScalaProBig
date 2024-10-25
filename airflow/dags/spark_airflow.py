@@ -12,25 +12,12 @@ default_args = {
 with DAG(
 
 
-    dag_id="hhtpdag",
+    dag_id="dagy",
     start_date=datetime(2024,10,14),
     schedule="@daily",
 ):
     
 
-
-    
-    def get_data():
-        import requests
-        import json
-
-        res = requests.get("https://randomuser.me/api/")
-        res = res.json()
-        res = res["results"][0]
-        print(json.dumps(res, indent=3))
-
-        return res
-
-
-get_data()
-
+ bash_task = BashOperator(
+    task_id="simple",
+    bash_command="runspark.sh")
