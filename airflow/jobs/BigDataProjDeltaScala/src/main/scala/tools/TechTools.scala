@@ -1,11 +1,12 @@
 package tools
 
-//import com.TestC.result
+import org.apache.spark.sql.DataFrame
 import tools.SparkCore.spark
-import tools.PostgresConnection.{connection, password, statement, url, username}
-
-import java.sql.ResultSet
-
+import tools.PostgresConnection.{ password, url, username}
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit.SECONDS
+import scala.util.Random
 
 
 
@@ -36,8 +37,6 @@ object TechTools {
 
 
   /**
-   * count rows in db table
-   *
    * val d =s"select count(*) as cou from crisis_data"
    * val resultSett:ResultSet=statement.executeQuery(d)
    * var countrow: Int = 0
@@ -46,49 +45,41 @@ object TechTools {
    * countrow = resultSett.getInt("cou")
    * }
    * println(countrow)
-   *
-   *
-   *
-   * */
+   **/
 
 
-  /**
-   *
-   *
-   * This func SelectTb is for selecting tables from db
-   * such as select statement
-   *
-   *
-   * */
-  def SelectTb()= {
-
-      println("ok")
-
+  /** This func SelectTb is for selecting tables from db such as select statement **/
+  def loadTable(tableName: String): DataFrame = {
+    spark.read
+      .format("jdbc")
+      .option("url", url)
+      .option("dbtable", tableName) // Specify the table name
+      .option("user", username)
+      .option("password", password)
+      .option("driver", "org.postgresql.Driver")
+      .load()
   }
 
 
-
-
-
-
-    def DisplayTableData(tableName: String): Unit = {
+    def displayTableData(tableName: String): Unit = {
       try {
         if (tableName == null || tableName.isEmpty) {
           throw new IllegalArgumentException("Table name cannot be null or empty")
         }
 
-        val query = s"SELECT * FROM $tableName"
-        println(s"Executing query: $query")
+        spark.read
+          .format("jdbc")
+          .option("url", url)
+          .option("dbtable", tableName) // Specify the table name
+          .option("user", username)
+          .option("password", password)
+          .option("driver", "org.postgresql.Driver")
+          .load()
 
-        val resultSet: ResultSet = statement.executeQuery(query)
+        val tableDf: DataFrame = loadTable(tableName)
 
-        while (resultSet.next()) {
-          val columnCount = resultSet.getMetaData.getColumnCount
-          for (i <- 1 to columnCount) {
-            print(resultSet.getString(i) + "\t")
-          }
-          println()
-        }
+        tableDf.show()
+
       } catch {
         case error: Exception =>
           error.printStackTrace()
@@ -100,9 +91,6 @@ object TechTools {
 
 
   /**
-   *
-   *
-   *
    * ***************************************************************************** *
    * ***This part is for reading from different file format (csv, parquet,json)*** *
    * ***************************************************************************** *
@@ -128,11 +116,7 @@ object TechTools {
    *
    *
    * csvDf.show()
-   *
-   *
    * parquetDf.show()
-   *
-   *
    * jsonDf.show()
    *
    *
@@ -239,8 +223,6 @@ object TechTools {
       }
     }
 
-
-
 /**
   def writeToPostgres(tablename: String){
     result.write
@@ -292,7 +274,102 @@ object TechTools {
    */
 
 
+/**
+ * package com
+ *
+ *
+ * import org.apache.spark.sql.functions.lit
+ * import org.apache.spark.sql.{Row, SparkSession}
+ * import org.json4s._
+ * import org.json4s.native.JsonMethods._
+ * import org.json4s.DefaultFormats
+ * import scalaj.http.{Http, HttpResponse}
+ *
+ * import java.time.LocalDateTime
+ *
+ * object GcpJsonManip {
+ *
+ * def main(args: Array[String]): Unit = {
+ *
+ *
+ * val spark = SparkSession.builder()
+ * .appName("DeltaLakeProject")
+ * .master("local[*]")
+ * .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension")
+ * .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
+ * .config("spark.hadoop.fs.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem")
+ * .config("spark.hadoop.google.cloud.auth.service.account.enable", "true")
+ * .getOrCreate()
+ *
+ * implicit val formats = DefaultFormats
+ *
+ * val response: HttpResponse[String] = Http("https://dummyjson.com/users").asString
+ * val json = parse(response.body)
+ *
+ * val seq = Seq("id", "firstName", "lastName", "age", "gender", "email", "phone", "username", "password", "birthDate", "ip", "macAddress", "university")
+ * var extractedData = Seq[Row]()
+ *
+ * // Loop to extract data for each user
+ * var j: Int = 0
+ * while (j <=2) {
+ * val firstResult = (json \ "users")(2)
+ * val rowValues = seq.map { field =>
+ * val value = (firstResult \ field)
+ * value.extractOpt[String].getOrElse(value.extractOpt[Int])
+ * }
+ * extractedData = extractedData :+ Row.fromSeq(rowValues)
+ * j += 1
+ * }
+ *
+ * // Create a schema for the DataFrame
+ * val schema = org.apache.spark.sql.types.StructType(
+ * seq.map(fieldName => org.apache.spark.sql.types.StructField(fieldName, org.apache.spark.sql.types.StringType, nullable = true))
+ * )
+ *
+ * // Convert the data into a DataFrame
+ * val df = spark.createDataFrame(spark.sparkContext.parallelize(extractedData), schema)
+ *
+ * // Show the DataFrame (for debugging)
+ * df.show()
+ *
+ * val currentDate = LocalDateTime.now().toString
+ *
+ * val Newdf = df.withColumn("CreationDate", lit(currentDate))
+ * // Write the DataFrame to GCS in JSON format
+ * Newdf.write
+ * .format("json")
+ * .save("gs://bigdatabuck/bronze/usersRepo/")
+ *
+ * println("Data saved to GCS in JSON format!")
+ * }
+ * }
+ * */
 
+
+def randomLong(maxExclusive: Long): Long = {
+  (Random.nextDouble() * maxExclusive).toLong
+}
+  // Method to generate a random date and time between two given dates
+def generateRandomDateTimeBetween(startDate: String, endDate: String, format: String = "yyyy-MM-dd HH:mm:ss"): String = {
+  // Define the formatter
+  val dateFormatter = DateTimeFormatter.ofPattern(format)
+
+  // Parse the start and end dates as LocalDateTime
+  val start = LocalDateTime.parse(startDate, dateFormatter)
+  val end = LocalDateTime.parse(endDate, dateFormatter)
+
+  // Get the number of seconds between the two dates
+  val secondsBetween = SECONDS.between(start, end)
+
+  // Generate a random number of seconds to add to the start date
+  val randomSeconds = randomLong(secondsBetween)
+
+  // Generate the random date-time
+  val randomDateTime = start.plusSeconds(randomSeconds)
+
+  // Return the random date-time as a formatted string
+  randomDateTime.format(dateFormatter)
+}
 
 
 
