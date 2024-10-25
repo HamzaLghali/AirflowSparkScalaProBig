@@ -10,7 +10,7 @@ object SalesGcp extends App{
   val spark: SparkSession = SparkSession.builder()
     .appName("App")
     .master("local[*]")
-    .config("spark.hadoop.google.cloud.auth.service.account.json.keyfile", "src/main/scala/configurations/idyllic-web-438914-g8-ff0563e08335.json")
+    .config("spark.hadoop.google.cloud.auth.service.account.json.keyfile", "")
     .getOrCreate()
 
   val client = loadTable("client")
