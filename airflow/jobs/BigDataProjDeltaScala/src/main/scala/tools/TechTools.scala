@@ -2,7 +2,7 @@ package tools
 
 import org.apache.spark.sql.DataFrame
 import tools.SparkCore.spark
-import tools.PostgresConnection.{ password, url, username}
+import tools.PostgresConnection.{ password, SourceUrl, username}
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit.SECONDS
@@ -52,7 +52,7 @@ object TechTools {
   def loadTable(tableName: String): DataFrame = {
     spark.read
       .format("jdbc")
-      .option("url", url)
+      .option("url", SourceUrl)
       .option("dbtable", tableName) // Specify the table name
       .option("user", username)
       .option("password", password)
@@ -69,7 +69,7 @@ object TechTools {
 
         spark.read
           .format("jdbc")
-          .option("url", url)
+          .option("url", SourceUrl)
           .option("dbtable", tableName) // Specify the table name
           .option("user", username)
           .option("password", password)

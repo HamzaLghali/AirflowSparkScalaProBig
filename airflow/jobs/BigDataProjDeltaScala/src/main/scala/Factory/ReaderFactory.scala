@@ -5,7 +5,6 @@ trait Factory{
   def apply(s: String): Reader
 }
 
-
 object ReaderFactory extends  Factory{
 
   def apply(s: String): Reader = {

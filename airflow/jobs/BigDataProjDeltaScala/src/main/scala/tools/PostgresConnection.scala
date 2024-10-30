@@ -11,11 +11,14 @@ object PostgresConnection{
   val SalesSilver = "SalesSilver"
   val SalesGold = "SalesGold"
 
-  val url = s"jdbc:postgresql://localhost:5432/Scala"
+  val SourceUrl = s"jdbc:postgresql://localhost:5432/$ScalaManip"
+  val SilverSourceDestinationUrl =s"jdbc:postgresql://localhost:5432/$SalesSilver"
+  val GoldDestinationUrl =s"jdbc:postgresql://localhost:5432/$SalesGold"
   val username = "postgres"
   val password = "password"
-  val connection: Connection = DriverManager.getConnection(url, username, password)
-  val statement: Statement = connection.createStatement()
+  val SourceConnection: Connection = DriverManager.getConnection(SourceUrl, username, password)
+  val SilverSourceConnection: Connection = DriverManager.getConnection(SilverSourceDestinationUrl, username, password)
+  val statement: Statement = SourceConnection.createStatement()
 
 
 }

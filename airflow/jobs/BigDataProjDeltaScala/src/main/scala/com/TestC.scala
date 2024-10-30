@@ -1,7 +1,7 @@
 package com
 
 import org.apache.spark.sql.functions.{col, to_date}
-import tools.PostgresConnection.{password, url, username}
+import tools.PostgresConnection.{password, SourceUrl, username}
 import tools.SparkCore.spark
 
 object TestC extends App{
@@ -16,7 +16,7 @@ object TestC extends App{
 
    res.write
    .format("jdbc")
-   .option("url", url)
+   .option("url", SourceUrl)
    .option("dbtable", "test") // Adjust to your actual table name
    .option("user", username)
    .option("password", password)

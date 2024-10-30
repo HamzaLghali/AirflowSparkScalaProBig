@@ -1,6 +1,6 @@
 import org.apache.spark.sql.functions._
 import tools.SparkCore.spark
-import tools.PostgresConnection.{password, statement, url, username}
+import tools.PostgresConnection.{password, statement, SourceUrl, username}
 //import tools.TechTools.writeToPostgres
 
 import java.sql.ResultSet

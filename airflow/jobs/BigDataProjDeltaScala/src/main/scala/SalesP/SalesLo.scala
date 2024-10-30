@@ -2,7 +2,7 @@ package SalesP
 
 import tools.TechTools.loadTable
 
-object SalesLo extends App{
+object SalesLo{
 
   val client = loadTable("client")
   val item = loadTable("item")

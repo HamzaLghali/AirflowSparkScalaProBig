@@ -1,7 +1,7 @@
 package com
 
 import org.apache.spark.sql.{DataFrame, SaveMode}
-import tools.PostgresConnection.{password, url, username}
+import tools.PostgresConnection.{password,SourceUrl, username}
 import tools.TechTools.loadTable
 
 object BeneficiaryOperation extends App {
@@ -31,7 +31,7 @@ object BeneficiaryOperation extends App {
   def saveToPostgres(df: DataFrame, tableName: String): Unit = {
     df.write
       .format("jdbc")
-      .option("url", url)
+      .option("url", SourceUrl)
       .option("dbtable", tableName)
       .option("user", username)
       .option("password", password)
