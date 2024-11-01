@@ -23,8 +23,8 @@ lazy val root = (project in file("."))
       "org.apache.kafka" % "kafka-clients" % "2.8.1"
     ),
     assembly / assemblyMergeStrategy := {
-      case PathList("META-INF", xs @ _*) => MergeStrategy.discard // Ignore META-INF files to avoid conflicts
-      case "reference.conf" => MergeStrategy.concat // Concatenate configuration files
-      case x => MergeStrategy.first // Default conflict resolution
+      case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+      case "reference.conf" => MergeStrategy.concat
+      case x => MergeStrategy.first
     }
   )
