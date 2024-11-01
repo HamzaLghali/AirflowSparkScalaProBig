@@ -1,6 +1,6 @@
 package SalesFactory
 
-import org.apache.spark.sql.{DataFrame, functions => F}
+import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.functions._
 
 trait Transformer {
@@ -32,6 +32,52 @@ class ProductTransformer extends Transformer{
       .withColumn("UpdateDate", lit("2999-12-31 23:59:59").cast("timestamp"))
       .withColumn("flagStatus", lit(true))
       .withColumn("UID", concat_ws("",col("product_id").cast("string"),length(col("product_name")),regexp_replace(col("CreationDate"),"[- :]","")))
+
+  }
+}
+
+
+class OrdersTransformer extends Transformer{
+
+  override def transform(dataFrames: Map[String, DataFrame]): DataFrame = {
+
+    val Orders =dataFrames("OrdersInputDF")
+    Orders
+        .where(col("payment_status")==="failed")
+      .withColumn("OrderDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
+      .withColumn("CreationDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
+      .withColumn("UpdateDate", lit("2999-12-31 23:59:59").cast("timestamp"))
+      .withColumn("flagStatus", lit(false))
+      .withColumn("UID", concat_ws("",col("item_id").cast("string"),col("client_id").cast("string"),regexp_replace(col("CreationDate"),"[- :]","")))
+        .union(
+          Orders.where(col("payment_status")==="paid")
+            .withColumn("OrderDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
+            .withColumn("CreationDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
+            .withColumn("UpdateDate", lit("2999-12-31 23:59:59").cast("timestamp"))
+            .withColumn("flagStatus", lit(true))
+            .withColumn("UID", concat_ws("",col("item_id").cast("string"),col("client_id").cast("string"),regexp_replace(col("CreationDate"),"[- :]","")))
+        ).union(
+        Orders.where(col("payment_status")==="pending")
+            .withColumn("OrderDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
+            .withColumn("CreationDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
+            .withColumn("UpdateDate", lit("2999-12-31 23:59:59").cast("timestamp"))
+            .withColumn("flagStatus", lit(true))
+            .withColumn("UID", concat_ws("",col("item_id").cast("string"),col("client_id").cast("string"),regexp_replace(col("CreationDate"),"[- :]","")))
+
+        )
+  }
+}
+
+class OrderItemsTransformer extends Transformer{
+
+  override def transform(dataFrames: Map[String, DataFrame]): DataFrame = {
+    val OrderItems = dataFrames("OrderItemsInputDF")
+
+    OrderItems
+      .withColumn("CreationDate", date_format(current_timestamp(),"yyyy-MM-dd HH:mm:ss"))
+      .withColumn("UpdateDate", lit("2999-12-31 23:59:59").cast("timestamp"))
+      .withColumn("flagStatus", lit(true))
+      .withColumn("UID", concat_ws("",col("lineitem_id").cast("string"),col("product_id").cast("string"),col("item_id"),regexp_replace(col("CreationDate"),"[- :]","")))
 
   }
 }

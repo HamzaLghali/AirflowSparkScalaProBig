@@ -16,6 +16,8 @@ class WorkflowRunner(
     val transformedDF = workflowType match {
       case "ClientTransformer" => new ClientTransformer().transform(inputDFs)
       case "ProductTransformer" => new ProductTransformer().transform(inputDFs)
+      case "OrdersTransformer" => new OrdersTransformer().transform(inputDFs)
+      case "OrderItemsTransformer" => new OrderItemsTransformer().transform(inputDFs)
       case _ => throw new IllegalArgumentException(s"Unknown workflow: $workflowType")
     }
 

@@ -9,7 +9,11 @@ trait Loader {
 
 class GCPLoader(path: String, format: String) extends Loader {
   override def load(dataFrame: DataFrame): Unit = {
-    dataFrame.write.format(format).save(path)
+
+    dataFrame.write
+      .format(format)
+      .mode("overwrite")
+      .save(path)
   }
 }
 

@@ -31,7 +31,7 @@ class SalesExtractor() extends Extractor {
       "CustomerInputDF" -> client,
       "ProductInputDF" -> product,
       "OrdersInputDF" -> item,
-      "OrderItems" -> lineitem
+      "OrderItemsInputDF" -> lineitem
     )
   }
 }
