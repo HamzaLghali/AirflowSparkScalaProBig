@@ -1,4 +1,4 @@
-package Factory
+package SampleFactory
 
 import tools.SparkCore.spark
 

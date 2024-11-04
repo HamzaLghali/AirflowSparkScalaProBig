@@ -1,4 +1,4 @@
-package Factory
+package SampleFactory
 
 object TestFact extends App{
 

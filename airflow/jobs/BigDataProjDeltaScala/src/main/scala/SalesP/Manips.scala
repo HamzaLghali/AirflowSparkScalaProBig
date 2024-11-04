@@ -1,8 +1,6 @@
-package com
+package SalesP
 
-
-import org.apache.spark.sql.functions.{col, concat_ws, count, current_timestamp, date_format, length, lit, regexp_replace, substring, to_date, upper}
-
+import org.apache.spark.sql.functions._
 import tools.TechTools.{generateRandomDateTimeBetween, loadTable}
 
 

@@ -1,3 +1,5 @@
+package Scratch
+
 import org.apache.spark.sql.functions._
 import tools.SparkCore.spark
 import tools.PostgresConnection.{password, statement, SourceUrl, username}

@@ -1,5 +1,4 @@
-package com
-
+package Scratch
 
 import org.apache.spark.sql.functions.lit
 import org.apache.spark.sql.{Row, SparkSession}
