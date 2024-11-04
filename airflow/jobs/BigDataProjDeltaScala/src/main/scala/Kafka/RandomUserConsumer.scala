@@ -8,7 +8,7 @@ object RandomUserConsumer extends App {
 
 
   val props = new Properties()
-  props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "host.docker.internal:9092")
+  props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
   props.put(ConsumerConfig.GROUP_ID_CONFIG, "user-consumer-group-id-" + java.util.UUID.randomUUID.toString)
   props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer")
   props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer")
@@ -20,7 +20,7 @@ object RandomUserConsumer extends App {
   println("Consumer started, awaiting messages...")
 
   while (true) {
-    val records = consumer.poll(3000) // Poll every second
+    val records = consumer.poll(5000) // Poll every second
     if (records.isEmpty) {
       println("No records found, polling again...")
     } else {

@@ -5,7 +5,7 @@ import org.apache.spark.sql.{DataFrame, Row}
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType, TimestampType}
 import tools.SparkCore.spark
 
-object SampleScdImplementation extends App{
+object SampleScdImplementation{
 
   val schema = StructType(Array(
     StructField("client_id", IntegerType, nullable = false),

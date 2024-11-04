@@ -1,15 +1,11 @@
 package ScdImpl
 
-import org.apache.spark.sql.{DataFrame, Row}
-import org.apache.spark.sql.functions.{col, concat_ws, current_date, current_timestamp, date_format, hash, lit, regexp_replace, substring, upper}
-import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
+import org.apache.spark.sql.functions._
+import org.apache.spark.sql.types.TimestampType
 import tools.SparkCore.spark
 import tools.TechTools.{loadTable, loadTableS}
-import org.apache.spark.sql.types.TimestampType
 
-
-
-object SilverSalesSCD extends App{
+object SilverSalesSCD extends App {
 
   val Client = loadTable("client")
 
@@ -22,17 +18,14 @@ object SilverSalesSCD extends App{
     .withColumn("UpdateDate", lit("2999-12-31 23:59:59").cast("timestamp"))
     .withColumn("flagStatus", lit(true))
     .withColumn("UID", concat_ws("", col("client_id").cast("string"), substring(col("phone_number"), 2, 9), regexp_replace(col("CreationDate"), "[-: ]", "")))
-    .drop("last_name")
-    .drop("phone_number")
+    .drop("last_name", "phone_number")
+    .withColumn("FinalHash", hash(concat_ws("", col("Firstname"), col("email"), col("Lastname"), col("Phone"))))
 
   val SilverClient = loadTableS("SilverClient")
-
-  val SilverHash = hash(concat_ws("", SilverClient("Firstname"), SilverClient("email"), SilverClient("Lastname"), SilverClient("Phone")))
-  val FinalHash = hash(concat_ws("", df_Final("Firstname"), df_Final("email"), df_Final("Lastname"), df_Final("Phone")))
-
+    .withColumn("SilverHash", hash(concat_ws("", col("Firstname"), col("email"), col("Lastname"), col("Phone"))))
 
   val update_df = SilverClient.join(df_Final, Seq("client_id"))
-    .filter(SilverClient("flagStatus") === true && SilverHash =!= FinalHash)
+    .filter(SilverClient("flagStatus") === true && SilverClient("SilverHash") =!= df_Final("FinalHash"))
     .select(
       SilverClient("UID"),
       SilverClient("client_id"),
@@ -42,7 +35,7 @@ object SilverSalesSCD extends App{
       SilverClient("AreaCode"),
       SilverClient("Phone"),
       SilverClient("CreationDate"),
-      current_date().cast(TimestampType).alias("UpdateDate"),
+      current_timestamp().cast(TimestampType).alias("UpdateDate"),
       lit(false).alias("flagStatus")
     )
 
@@ -76,6 +69,6 @@ object SilverSalesSCD extends App{
     )
 
   val final_df = update_df.union(insert_df).union(no_change_df)
-  final_df.show()
 
+  final_df.show()
 }

@@ -14,7 +14,7 @@ object RandomUserProducer extends App {
 
 
   val props = new Properties()
-  props.put("bootstrap.servers", "host.docker.internal:9092")
+  props.put("bootstrap.servers", "localhost:9092")
   props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
   props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
 
@@ -37,9 +37,14 @@ object RandomUserProducer extends App {
 
   def sendToKafka(topic: String, data: String): Unit = {
     val record = new ProducerRecord[String, String](topic, data)
-    producer.send(record)
-    println(s"Sent data to Kafka: $data")
+    try {
+      producer.send(record).get() // Force sync sending to detect any errors
+      println(s"Sent data to Kafka: $data")
+    } catch {
+      case e: Exception => println(s"Failed to send data to Kafka: ${e.getMessage}")
+    }
   }
+
 
 
   fetchUserData() match {
