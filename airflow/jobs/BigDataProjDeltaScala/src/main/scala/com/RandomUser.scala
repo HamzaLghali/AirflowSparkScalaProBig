@@ -22,7 +22,6 @@ object RandomUser extends App{
       for (field <- seq) {
           val value = (firstResult \ field)
 
-          // Try to extract as String or Int
           val extractedValue = value.extractOpt[String].getOrElse(value.extractOpt[Int].getOrElse("Unknown"))
           println(s"$field: $extractedValue")
         }

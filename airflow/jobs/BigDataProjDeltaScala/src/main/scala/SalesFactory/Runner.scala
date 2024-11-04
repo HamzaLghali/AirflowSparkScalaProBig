@@ -38,11 +38,7 @@ def SalesRun(destType: String,tablename: String): Unit = {
       RunRunnnerConf(tablename,"OrderItemsTransformer","SilverOrderItems",destType)
     case _ =>
       println("Invalid Arg")
-  }
-
-}
-
-}
+  }}}
 
 object Test{
 

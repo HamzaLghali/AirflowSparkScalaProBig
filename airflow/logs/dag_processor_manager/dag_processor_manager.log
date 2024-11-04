@@ -9138,3 +9138,33 @@ File Path                           PID    Runtime      # DAGs    # Errors  Last
 /opt/airflow/dags/spark_airflow.py                           1           0  0.38s           2024-10-25T11:06:37                      12
 ================================================================================
 [2024-10-25T11:07:26.766+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
+[2024-11-01T11:18:26.924+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time 
+[2024-11-01T11:18:26.925+0000] {manager.py:484} INFO - Process each file at most once every 30 seconds
+[2024-11-01T11:18:26.926+0000] {manager.py:485} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2024-11-01T11:18:26.927+0000] {manager.py:821} INFO - Searching for files in /opt/airflow/dags
+[2024-11-01T11:18:27.012+0000] {manager.py:824} INFO - There are 1 files in /opt/airflow/dags
+[2024-11-01T11:18:27.197+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run      Last # of DB Queries
+----------------------------------  -----  ---------  --------  ----------  --------------  ----------  ----------------------
+/opt/airflow/dags/spark_airflow.py    163  0.05s             0           0                                                   0
+================================================================================
+[2024-11-01T11:18:57.205+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/spark_airflow.py                           1           0  0.42s           2024-11-01T11:18:27                      12
+================================================================================
+[2024-11-01T11:19:27.411+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/spark_airflow.py                           1           0  0.29s           2024-11-01T11:18:58                      12
+================================================================================
+[2024-11-01T11:19:29.462+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
