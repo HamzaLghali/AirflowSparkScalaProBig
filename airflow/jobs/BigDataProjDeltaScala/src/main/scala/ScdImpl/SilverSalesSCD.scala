@@ -4,30 +4,16 @@ import org.apache.spark.sql.{DataFrame, Row}
 import org.apache.spark.sql.functions.{col, concat_ws, current_date, current_timestamp, date_format, hash, lit, regexp_replace, substring, upper}
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
 import tools.SparkCore.spark
-import tools.TechTools.loadTableS
+import tools.TechTools.{loadTable, loadTableS}
 import org.apache.spark.sql.types.TimestampType
 
 
 
 object SilverSalesSCD extends App{
 
-  val schema = StructType(Array(
-    StructField("client_id", IntegerType, nullable = false),
-    StructField("first_name", StringType, nullable = true),
-    StructField("last_name", StringType, nullable = true),
-    StructField("email", StringType, nullable = true),
-    StructField("phone_number", StringType, nullable = true)
-  ))
+  val Client = loadTable("client")
 
-  val data = Seq(
-    Row(1, "John", "Ha", "john.doe@example.com", "+1234567890"),
-    Row(1212, "Koli", "Bali", "Koli@example.com", "+0456789032"),
-    Row(22212, "Moussa", "sissoko", "Moussa@example.com", "+0456789023")
-  )
-
-  val df: DataFrame = spark.createDataFrame(spark.sparkContext.parallelize(data), schema)
-
-  val df_Final = df
+  val df_Final = Client
     .withColumnRenamed("first_name", "Firstname")
     .withColumn("Lastname", upper(col("last_name")))
     .withColumn("AreaCode", lit("+212"))
@@ -38,14 +24,13 @@ object SilverSalesSCD extends App{
     .withColumn("UID", concat_ws("", col("client_id").cast("string"), substring(col("phone_number"), 2, 9), regexp_replace(col("CreationDate"), "[-: ]", "")))
     .drop("last_name")
     .drop("phone_number")
+
   val SilverClient = loadTableS("SilverClient")
 
-  // Hash computation with concatenated fields for simplified comparison
   val SilverHash = hash(concat_ws("", SilverClient("Firstname"), SilverClient("email"), SilverClient("Lastname"), SilverClient("Phone")))
   val FinalHash = hash(concat_ws("", df_Final("Firstname"), df_Final("email"), df_Final("Lastname"), df_Final("Phone")))
 
 
-  // Convert UpdateDate in update_df to timestamp
   val update_df = SilverClient.join(df_Final, Seq("client_id"))
     .filter(SilverClient("flagStatus") === true && SilverHash =!= FinalHash)
     .select(
@@ -61,7 +46,6 @@ object SilverSalesSCD extends App{
       lit(false).alias("flagStatus")
     )
 
-  // Ensure UpdateDate is also a timestamp in no_change_df
   val no_change_df = SilverClient.join(update_df, Seq("client_id"), "left_anti")
     .filter(SilverClient("flagStatus") === true)
     .select(
@@ -77,7 +61,6 @@ object SilverSalesSCD extends App{
       SilverClient("flagStatus")
     )
 
-  // Ensure UpdateDate is a timestamp in insert_df
   val insert_df = df_Final.join(no_change_df, Seq("client_id"), "left_anti")
     .select(
       df_Final("UID"),
