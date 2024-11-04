@@ -2,7 +2,8 @@ package tools
 
 import org.apache.spark.sql.DataFrame
 import tools.SparkCore.spark
-import tools.PostgresConnection.{ password, SourceUrl, username}
+import tools.PostgresConnection.{SilverSourceDestinationUrl, SourceUrl, password, username}
+
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit.SECONDS
@@ -53,6 +54,17 @@ object TechTools {
     spark.read
       .format("jdbc")
       .option("url", SourceUrl)
+      .option("dbtable", tableName) // Specify the table name
+      .option("user", username)
+      .option("password", password)
+      .option("driver", "org.postgresql.Driver")
+      .load()
+  }
+
+  def loadTableS(tableName: String): DataFrame = {
+    spark.read
+      .format("jdbc")
+      .option("url", "jdbc:postgresql://localhost:5432/SalesSilver")
       .option("dbtable", tableName) // Specify the table name
       .option("user", username)
       .option("password", password)
