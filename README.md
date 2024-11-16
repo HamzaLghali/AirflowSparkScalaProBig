@@ -1,5 +1,4 @@
 # AirflowSparkScalaProBig
-# AirflowSparkScalaProBig
 
 ## Overview
 Welcome to the **AirflowSparkScalaProBig** project! This repository demonstrates a comprehensive **Big Data Engineering** solution leveraging:
@@ -23,10 +22,6 @@ This solution is designed to efficiently process, transform, and manage large-sc
 - **Slowly Changing Dimensions (SCD):** Manage historical data changes efficiently.
 - **Cloud Integration:** Utilize GCP and Databricks services for storage, computation, and scalability.
 
-## Architecture Diagram
-Include an architecture diagram here if available. 
-
----
 
 ## Getting Started
 
